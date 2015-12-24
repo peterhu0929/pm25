@@ -5,7 +5,10 @@ var request = require("request");
 var fs = require("fs");
 var cheerio = require("cheerio");
 
+var timer;
+
 var pm = function() {
+  clearTimeout(timer);
   request({
     url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
     method: "GET"
@@ -18,7 +21,6 @@ var pm = function() {
     var result = [];
     var title = $(".titleLeft");
     var decimal = $(".decimal");
-    console.log(decimal);
     for (var i = 0; i < title.length; i++) {
       result.push('{"'+title[i].children[1].data+'":['+decimal[4*i].children[0].data + ','+decimal[4*i+1].children[0].data+']}');
     }
@@ -43,4 +45,4 @@ var pm = function() {
 };
 
 pm();
-setInterval(pm,5*60*1000);
+timer = setInterval(pm,2*60*1000);
