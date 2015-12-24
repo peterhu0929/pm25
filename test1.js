@@ -6,6 +6,7 @@ var fs = require("fs");
 var cheerio = require("cheerio");
 
 var timer;
+var m = 2;
 
 var pm = function() {
   clearTimeout(timer);
@@ -42,7 +43,7 @@ var pm = function() {
       });
     });
   });
+  timer = setInterval(pm,m*60*1000);
 };
 
 pm();
-timer = setInterval(pm,2*60*1000);
