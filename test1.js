@@ -43,7 +43,7 @@ var pm = function() {
       });
     });
   });
-  timer = setInterval(pm,m*60*1000);
+  timer = setTimeout(pm,m*60*1000);
 };
 
 pm();
